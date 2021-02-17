@@ -1,0 +1,56 @@
+#include "pch.h"
+#include "MyStr.h"
+#include <iostream>
+
+int main()
+{
+	char str1[9]={ "Hello!!" };
+	char str2[20] = {};
+	char str3[20] = {"ell"};
+	char str4[20] = { "Hello!!" };
+	int dl;
+
+	dl = strLen(str1);
+	std::cout<<"The length of the string = " << dl << std::endl;
+	std::cout << "Copying a string " << std::endl;
+	strCpy(str2, str1);
+	std::cout << "String 1 - " << str1 << std::endl;
+	std::cout << "String 2 - " << str2 << std::endl;
+	std::cout << "Gluing a string" << std::endl;
+	strCat(str2, str1);
+	std::cout << "String 1 - " << str1 << std::endl;
+	std::cout << "String 2 - " << str2 << std::endl;
+	strReverse(str1);
+	std::cout << "Reverse string - " << str1 << std::endl;
+	strToUpper(str1);
+	std::cout << "Uppercase string - " << str1 << std::endl;
+	strToLower(str1);
+	std::cout << "Lowercase string - " << str1 << std::endl;
+	int vxodSubstring;
+	vxodSubstring = strStr(str2,str3);
+	if (vxodSubstring == -1)
+	{
+		std::cout << "There is no substring in the string"<< std::endl;
+	}
+	else
+	{
+		std::cout << "String - " << str2 << std::endl;
+		std::cout <<  "Substring  - " << str3 << std::endl;
+		std::cout << "Index of the substring input to the string - " << vxodSubstring <<std::endl;
+	}
+
+	int ravenstvo;
+	ravenstvo = strCmp(str1,str4);
+	switch (ravenstvo)
+	{
+		case 0:
+			std::cout << "Substring 1 = 2 "  << std::endl;
+		break;
+		case 1:
+			std::cout << "Substring 1 > 2 "  << std::endl;
+		break;
+		case -1:
+			std::cout << "Substring 2 > 1"  << std::endl;
+		break;
+	}
+}
