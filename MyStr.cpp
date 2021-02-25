@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "MyStr.h"
-unsigned int strLen(const char *str)
+unsigned int strLen()
 {
 	int DlinnaStr=0;
 	while (str[DlinnaStr]!='\0')
