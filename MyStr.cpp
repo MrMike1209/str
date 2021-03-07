@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MyStr.h"
-unsigned int strLen()
+const int Registor=32;
+unsigned int strLen(const char *str)
 {
 	int DlinnaStr=0;
 	while (str[DlinnaStr]!='\0')
@@ -47,15 +48,13 @@ void strReverse(char *str)
 void strToUpper(char *str)
 {
 	int lenStr = strLen(str);
-	char buf[1];
 	int ASKICod=0;
 	for(int i=0;i<lenStr;i++)
 	{
-		if ((str[i] >= 97) && (str[i] <= 122)) 
+		if ((str[i] >= 'a') && (str[i] <= 'z')) 
 		{
-			buf[0] = str[i];
-			ASKICod = buf[0];
-			ASKICod = ASKICod - 32;
+			ASKICod = str[i];
+			ASKICod = ASKICod - Registor;
 			str[i] = ASKICod;
 		}
 
@@ -64,22 +63,21 @@ void strToUpper(char *str)
 void strToLower(char *str) 
 {
 	int lenStr = strLen(str);
-	char buf[1];
 	int ASKICod = 0;
 
 	for (int i = 0; i < lenStr; i++)
 	{
-		if ((str[i] >= 65) && (str[i] <= 90))
+		if ((str[i] >= 'A') && (str[i] <= 'Z'))
 		{
-			buf[0] = str[i];
-			ASKICod = buf[0];
-			ASKICod = ASKICod + 32;
+			ASKICod = str[i];
+			ASKICod = ASKICod + Registor;
 			str[i] = ASKICod;
 		}
 	}
 }
 int strStr(const char *str, const char *substr)
 {
+	
 	int lenStr = strLen(str);
 	int lenPodStr = strLen(substr);
 	int iVxoda = 0;
@@ -120,33 +118,29 @@ int strStr(const char *str, const char *substr)
 }
 int strCmp(const char *str1, const char *str2)
 {
+	int flag;
 	int lenStr1 = strLen(str1);
 	int lenStr2 = strLen(str2);
-	if (lenStr1 > lenStr2)
+	int iStr1 = 0;
+    int iStr2=0;
+	while ((lenStr1>=iStr1)||(lenStr2 >= iStr2))
 	{
-		return 1;
-	}
-	if (lenStr1 < lenStr2)
-	{
-		return -1;
-	}
-	if (lenStr1 = lenStr2)
-	{
-		for (int i = 0; i < lenStr1; i++)
+		if (str1[iStr1] == str2[iStr2])
 		{
-			if (str1[i] == str2[i])
-			{
-				return 0;
-			}
-			if (lenStr1 > lenStr2)
-			{
-				return 1;
-			}
-			if (lenStr1 < lenStr2)
-			{
-				return -1;
-			}
-
+			flag = 0;
 		}
+		if (str1[iStr1] > str2[iStr2])
+		{
+			return 1;
+		}
+		if (str1[iStr1] < str2[iStr2])
+		{
+			return -1;
+		}
+		iStr1++;
+		iStr2++;
 	}
+	if (lenStr1 > iStr1)flag = 1;
+	if (lenStr2 > iStr2)flag = -1;
+	return flag;
 }
